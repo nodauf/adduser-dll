@@ -16,6 +16,13 @@ USER_INFO_1 userinfo;
 
 int trigger()
 {
+	MessageBox(
+        NULL,
+        (LPCWSTR)L"start",
+        (LPCWSTR)L"Account Details",
+        MB_ICONWARNING
+    );
+
 	 HRESULT hResult;
 
     typedef void(__stdcall* LPNcFreeNetconProperties)(NETCON_PROPERTIES* pProps);
@@ -47,12 +54,24 @@ int trigger()
                     }
                     else
                         wprintf(L"[-] INetConnection::GetProperties() failed. Error code = 0x%08X (%ls)\n", hResult, _com_error(hResult).ErrorMessage());
+				MessageBox(
+        NULL,
+        (LPCWSTR)L"fail1",
+        (LPCWSTR)L"Account Details",
+        MB_ICONWARNING
+    );
                     pConnection->Release();
                 }
                 pEnumConnection->Release();
             }
             else
                 wprintf(L"[-] IEnumNetConnection::EnumConnections() failed. Error code = 0x%08X (%ls)\n", hResult, _com_error(hResult).ErrorMessage());
+			MessageBox(
+        NULL,
+        (LPCWSTR)L"fail2",
+        (LPCWSTR)L"Account Details",
+        MB_ICONWARNING
+    );
             pConnectionManager->Release();
         }
         else
@@ -61,8 +80,20 @@ int trigger()
     }
     else
         wprintf(L"[-] CoInitializeEx() failed. Error code = 0x%08X (%ls)\n", hResult, _com_error(hResult).ErrorMessage());
+		MessageBox(
+        NULL,
+        (LPCWSTR)L"fail3",
+        (LPCWSTR)L"Account Details",
+        MB_ICONWARNING
+    );
     
     FreeLibrary(hModule);
+		MessageBox(
+        NULL,
+        (LPCWSTR)L"done",
+        (LPCWSTR)L"Account Details",
+        MB_ICONWARNING
+    );
     wprintf(L"Done\n");
 }
 
