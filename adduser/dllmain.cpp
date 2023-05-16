@@ -18,8 +18,8 @@ int trigger()
 {
 	MessageBox(
         NULL,
-        (LPCWSTR)L"start",
-        (LPCWSTR)L"Account Details",
+        (LPCWSTR)L"Hello World",
+        (LPCWSTR)L"Hello World",
         MB_ICONWARNING
     );
 
